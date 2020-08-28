@@ -8,28 +8,29 @@ export type Props = {|
   /**
    * Title text for the `MenuItem`.
    */
-  title: string,
-  /**
-   * Icon to display for the `MenuItem`.
-   */
-  icon?: ?React.Node,
-  /**
-   * Whether the 'item' is disabled. A disabled 'item' is greyed out and `onPress` is not called on touch.
-   */
-  disabled?: boolean,
-  /**
-   * Function to execute on press.
-   */
-  onPress: ?() => any,
-  /**
-   * @optional
-   */
-  style?: ViewStyleProp,
-  titleStyle?: ViewStyleProp,
-  /**
-   * TestID used for testing purposes
-   */
-  testID?: string,
+ // title: string,
+  title: React.Node,
+    /**
+     * Icon to display for the `MenuItem`.
+     */
+    icon ?: ? React.Node,
+    /**
+     * Whether the 'item' is disabled. A disabled 'item' is greyed out and `onPress` is not called on touch.
+     */
+    disabled ?: boolean,
+    /**
+     * Function to execute on press.
+     */
+    onPress: ?() => any,
+      /**
+       * @optional
+       */
+      style ?: ViewStyleProp,
+      titleStyle ?: ViewStyleProp,
+      /**
+       * TestID used for testing purposes
+       */
+      testID ?: string,
 |};
 
 /**
@@ -51,9 +52,10 @@ export class MenuItem extends React.Component<Props> {
         disabled={disabled}
         testID={testID}
       >
-        <View style={styles.row}>
+        {title}
+        {/* <View style={styles.row}>
           {React.isValidElement(icon) && (
-            <View style={[styles.item, styles.icon]} pointerEvents="box-none">
+            <View style={[styles.item, styles.icon, ]} pointerEvents="box-none">
               {icon}
             </View>
           )}
@@ -65,8 +67,8 @@ export class MenuItem extends React.Component<Props> {
               {title}
             </Text>
           </View>
-        </View>
-      </Touchable>
+        </View> */}
+      </Touchable >
     );
   }
 }
@@ -85,6 +87,8 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: "center"
   },
   icon: {
     width: iconWidth,
@@ -93,15 +97,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   item: {
-    marginHorizontal: 8,
+    //  marginHorizontal: 8,
   },
   content: {
     justifyContent: 'center',
-    minWidth: minWidth - 16,
-    maxWidth: maxWidth - 16,
+    // minWidth: minWidth - 16,
+    // maxWidth: maxWidth - 16,
   },
   widthWithIcon: {
-    maxWidth: maxWidth - (iconWidth + 48),
+    // maxWidth: maxWidth - (iconWidth + 48),
   },
   disabledColor: {
     color: 'rgba(0, 0, 0, 0.32)',
